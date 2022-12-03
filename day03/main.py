@@ -1,6 +1,8 @@
 import dataclasses
 from itertools import zip_longest
 
+from utils import results
+
 
 @dataclasses.dataclass
 class Rucksack:
@@ -42,19 +44,12 @@ def puzzle2(data: Rucksacks):
     return sum([item_score("".join(badge)) for badge in badges])
 
 
-def show_results(name: str, test_results, expected_test: int, input_results):
-    assert test_results == expected_test
-    print(f"{name} test: {test_results}")
-    print(f"{name} input: {input_results}")
-    print("----------------------------------------------------------------")
-
-
 def main():
     data_test = process_input("data/test.txt")
     data_input = process_input("data/input.txt")
 
-    show_results("puzzle1", puzzle1(data_test), 157, puzzle1(data_input))
-    show_results("puzzle2", puzzle2(data_test), 70, puzzle2(data_input))
+    results.show("puzzle1", puzzle1(data_test), 157, puzzle1(data_input))
+    results.show("puzzle2", puzzle2(data_test), 70, puzzle2(data_input))
 
     puzzle2(data_test)
 
