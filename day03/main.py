@@ -1,6 +1,5 @@
 import dataclasses
 from itertools import zip_longest
-from typing import List
 
 
 @dataclasses.dataclass
@@ -24,7 +23,7 @@ def item_score(item:str) -> int:
     return ord(item[0]) - (96 if item[0].islower() else 38)
 
 
-Rucksacks = List[Rucksack]
+Rucksacks = list[Rucksack]
 
 
 def process_input(filename: str) -> Rucksacks:
