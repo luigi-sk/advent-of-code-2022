@@ -27,12 +27,8 @@ def parse_files(lines):
 
 
 def get_folders_of_path(filepath: str) -> list[str]:
-    rel_path = os.sep
-    res = []
-    for f in filepath.split(os.sep)[:-1]:
-        rel_path = path.join(rel_path, f)
-        res.append(rel_path)
-    return res
+    without_file = filepath.split(os.sep)[:-1]
+    return [path.join(os.sep, *without_file[:i+1]) for i in range(len(without_file))]
 
 
 def get_folders_size(files) -> Counter:
@@ -68,7 +64,7 @@ def puzzle2(data: str) -> int:
 
 
 def main():
-    input_data = Path("data/test.txt").read_text()
+    # input_data = Path("data/test.txt").read_text()
     input_data = Path("data/input.txt").read_text()
     print(puzzle1(input_data))
     print(puzzle2(input_data))
